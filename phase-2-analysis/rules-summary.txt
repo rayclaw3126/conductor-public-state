@@ -1,0 +1,212 @@
+# Conductor rules dump | total: 209
+# ID    | content[:80]                                                                       | tags                                               | keywords                                 | enabled
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+119   | BrandLogo md 默认 189px，mobile navbar 装不下需收窄字距或缩 scale                               | ["BrandLogo","navbar"]                             | ["BrandLogo md","navbar 装不下"]            | True
+112   | pre-commit lint debt 必清不 disable（precedent: 768 violations 全清）                     | ["lint","precommit"]                               | ["lint debt","stylelint"]                | True
+115   | dev pm2 跑 next dev 非 standalone (pm2 describe 显 script=next args=dev -p 3500),ho   | ["pm2","build"]                                    | ["pm2 restart","dev build"]              | True
+118   | 响应式测试 402×928 (honor magic v2) + 375 + 393 三档                                      | ["responsive","mobile"]                            | ["puppeteer","402","375"]                | True
+114   | Tailwind v4 项目无 tailwind.config，断点查 globals.css @theme 块                           | ["tailwind","v4"]                                  | ["tailwind config","断点"]                 | True
+116   | 旧 token v2 化走 4 票：alias → sed refs → 删 def → logo 迁移                               | ["v2","token"]                                     | ["旧 token","v2 化"]                       | True
+117   | xiaoR/xiaoN 角色色业务隔离，不属 v2 化范围，--purple/--detective 不动                              | ["xiaoR","xiaoN"]                                  | ["--purple","--detective"]               | True
+207   | 新加 admin route (requireAdminRole) 必同步加 src/proxy.ts USER_AUTH_WHITELIST. 漏=proxy   | admin,route,sec                                    |                                          | True
+76    | 改 auth 必走 docs/auth/contract.md 5 条契约 checklist:C1 signUp 静默 / C2 generateLink f   | always_on,auth                                     | auth,login,register,setSession,signUp,Su | True
+73    | 禁 localStorage 当数据库。每个 保存 / 提交 按钮必须接真 API + 在代码注释端点路径(// API: POST /xxx)。demo 数据   | always_on,backend                                  | 保存,提交,数据,localStorage,demo               | True
+61    | 收到 conductor URL 必先 web_fetch 全部 → 复述 NH state 关键项 + 待办工单 → 才能开工                   | always_on,bootup                                   | ;nh,继续NH,开机                              | True
+71    | Ray 发 11111 / ;nh / 继续NH / 开机 → Claude 第一动作必 git clone https://github.com/raycla   | always_on,bootup                                   | ;nh,继续NH,开机,开始,接上,11111                  | True
+66    | 涉及 logo / 品牌资产工作,Claude 第一动作必须 web_fetch docs/design/brand.md。如果文件标 TODO 待定稿 或资产   | always_on,brand                                    | logo,Logo,brand,品牌,favicon,字体,wordmark,L | True
+67    | Ray 偏好优先级 > 训练默认值。完整答案的硬要求 > 简洁默认值。Ray 任何一次说 不要保留 / 你在筛 / 你又过滤了 / 不够完善,Claude 立刻   | always_on,communication                            | 你在筛,你又过滤,不要保留,完整,复盘,简短,不够完善              | False
+83    | 对低复杂度决策(单一最优解明显的场景),Claude 直接判断+推荐,不抛 A/B/C 多选项让 Ray 选。Ray 风格:简短直接,要执行不要选择负担。多选项   | always_on,communication                            | 你说呢,你判断,你定,你看着办                          | False
+81    | Conductor API 端点协议(必先 fetch docs/ops/conductor-api.md):POST /rules 用 form-urlenc   | always_on,conductor,api                            | PUT,POST /rules,conductor,/state,api 调用, | True
+75    | 6 条部署铁律命中即 Claude 引用 docs/ops/deploy.md 对应条款:① pm2 restart ≠ rebuild ② 改 .env 必    | always_on,deploy                                   | pm2,build,.env,standalone,sites-enabled, | True
+58    | memory 里的 P0/阻塞标签必须有 ≤ 7 天复现证据。复用旧 P0 判断前先验证现状(curl/log/复现路径),复现失败立刻降级 + 更新 memo   | always_on,diagnose                                 | P0,阻塞,上线前必修                              | True
+63    | NH_DEV_SOP_v1 / CLAUDE.md / AGENTS.md 以 GitHub docs/ 为权威，EC2 副本只 pull 不改           | always_on,docs                                     | SOP,CLAUDE.md,AGENTS.md,文档               | True
+23    | Ray 说"少废话""废话多""说人话"等批评话痨时，立刻只贴指令/答案，不解释、不道歉、不绕。下一条消息禁止任何铺垫说明。                     | always_on,feedback                                 | 少废话,废话多,废话,你他妈,说人话                       | False
+26    | 任务完成时不抢功。Ray 亲手敲命令、亲自处理 prod 的事，说"你做完了"不说"我们做完了"。我的角色是出指令，执行是 Ray。                 | always_on,feedback                                 |                                          | False
+68    | Ray 提 你说过 X 吗 或 之前说过 Y 吗,Claude 第一动作必须 conversation_search 历史。禁止凭记忆否认或确认。搜到承认,搜不   | always_on,honesty                                  | 你说过,我说过,之前说,上次说,记得吗,你忘了                  | True
+72    | i18n 涉及 commit 前必跑 lint 三件:① 所有 t(xxx) 调用 vs 字典 key 缺失 ② 三语言文件 key 集合一致性 ③ JS 模板   | always_on,i18n                                     | i18n,翻译,多语言,locale,中英,zh,en,km           | True
+22    | 每次对话都当正事。不要因为对话长了就放松、跳步、自作主张。每条消息都按'刚开始对话'那样认真——派单前查现状、问清楚再做、不夸不附和、不偷懒。Ray 没说的事不   | always_on,meta                                     |                                          | False
+77    | 探针禁只验 HTTP 200。必须验业务字段(/api/health 返 db: connected / supabase: reachable 等)。Cond   | always_on,ops                                      | 探针,health,监控,probe,uptime                | True
+60    | 动 page.tsx / dev 进程 / .env / 加 fetch 任一前必跑 4 项扫描:(1) 动 src/app/(group)/page.tsx    | always_on,preflight                                | page.tsx,pm2,.env,ecosystem.config,fetch | True
+79    | 对话中出现这些信号词,Claude 必须暂停,插一句 这是新坑还是已知坑?。已知坑 → 标 该坑已记录在 X(rule id / docs 路径),但执行不到位   | always_on,quality                                  | 又错了,又出问题,又怎么,反复,之前说,不是说过吗,你又             | True
+82    | Claude 给出多方案/多选项后,Ray 选定立刻当下落地验证,禁止『下次再说/晚点弄』。讨论完未落地 → 下个对话必重复同坑(本对话开头 conductor   | always_on,quality                                  | 讨论,方案,三选一,二选一,你选                         | False
+74    | 任何重构开工先 cp docs/refactor/template.md 为 docs/refactor/<日期>-<模块>.md,填完 8 项(目标 / 已修   | always_on,refactor                                 | 重构,重写,重建,迁移,refactor                     | True
+62    | 收工前必出 4 项（今日 commits / 工单状态变化 / 新踩坑 / 下次接手要知道的事），并出 curl PUT /state/nh 把 §最近变更 同   | always_on,shutdown                                 | 收工,结束,休息,睡了                              | True
+78    | Ray 说收工 → Claude 必按顺序:① conversation_search 本对话(关键词 错/坑/又/没/漏/失败/反复) ② 提取 5 类(新坑   | always_on,shutdown                                 | 收工,结束,休息,睡了,下次再说,today done,00000        | True
+64    | UI 改动开工前必 web_fetch docs/design/tokens.md + theme-rules.md + brand.md(三份缺一不可)。在对   | always_on,ui,design                                | 改色,UI,主题,Hero,渐变,token,globals.css,hex,设 | True
+59    | 改 UI 颜色/主题前必走 4 条铁律:(1) 让 CC 扫 globals.css 全部 token + 主站现有页 background 实际值,贴回 Ra   | always_on,ui,theme                                 | 改色,换主题,配色,globals.css,tokens,bg-,text-,b | True
+65    | 涉及颜色 / 背景 / 边框 / 字色的 commit,收工前必须并排提供 light + dark 双主题截图(Ray 截图,Claude 不可代替)。Ray   | always_on,ui,verify                                | 收工,完成,推送,commit,完工,push,搞定               | True
+70    | 完工必须 Ray 在对话里写 收货 / OK 收 / 收 / 1 通过 / 验收。Claude 自宣告 完工 / 搞定 无效,必须等 Ray 显式确认。       | always_on,verify                                   | 完工,搞定,做好了,搞掂,done,ok 收                   | True
+69    | 见到 UI 任务,Claude 第一句必须问 Ray 先 Visualizer 出 X 风格 / Y 方案 让你选?。不允许直接给完整代码 / CC 指令。先纯   | always_on,workflow                                 | 改 UI,做页面,做组件,设计,新页,Visualizer,UI         | True
+4     | 不废话，不堆术语，不列 N 个表格选项让 Ray 选。Ray 听不懂就是我没说清，自己重写一遍，别让 Ray 反复问什么意思。一句能说完的事不分两段。        | always_on                                          |                                          | False
+5     | 术语别用（白名单/字段/wire/真值等），中文白话替代。CC 报告里的术语我要翻译成 Ray 能秒懂的话再转述。Ray 说看不懂你说什么时立刻重写整段，不解释   | always_on                                          | 看不懂,什么意思,你说啥,说人话                         | True
+15    | 一行能说完的事不分两段。不堆段落、不甩 5 个 bullet 列清单装详细。Ray 听不懂 = 我没说清，自己重写不解释。                      | always_on                                          |                                          | False
+16    | 不夸 Ray 不附和。Ray 说什么不要回'你说得对''好主意''完全同意'。Ray 错了直接说错并指出。我自作主张被 Ray 抓到要直接认，不解释为什么。     | always_on                                          |                                          | True
+19    | 长输出前先问。要写超过 20 行的内容前问 Ray'长版还是短版'。除非 Ray 明确点过要长版（比如 SESSION_LOG）。                  | always_on                                          |                                          | False
+140   | 派 Ray 跑 SSH/bash 命令前,首行必标【WSL】/【EC2 dev】/【EC2 prod】+ 完整路径。Ray 反复问"这里？" = 我没标机器导致   | always_on                                          | 这里,在哪,ssh,WSL,EC2                        | True
+141   | SQL 操作必标执行位置:【Supabase Web SQL Editor】vs【WSL psql】vs【EC2 psql】。禁让 Ray 把 SQL 贴进 b   | always_on                                          | SQL,migration,create table,insert into,s | True
+144   | 诊断/规划阶段先派 CC verify 现状(grep/ls/git log),看完事实再列执行清单。提前抛"我会做 X Y Z" = 凭假设派单 = 跑花园风   | always_on                                          | 先检查,别瞎猜,verify,确认,别白忙                    | True
+186   | Anthropic Custom Connector 失败后有账号级 cache 锁,Remove + Add 同账号同 URL 不破解,换 URL 也不破解。   | anthropic,connector,cache,client-side              | Couldn't reach the MCP server,connector  | True
+94    | Claude App 涉及 Anthropic 产品行为，凭印象禁建议，凡建议必先 web_search 核实                            | anthropic-product                                  | Cowork,Claude Code,Routines,Claude.ai 功能 | True
+172   | 占位数量必 grep 实证。禁脑补'剩 X 处占位'。必 grep ComingSoonPanel 数清楚再报数，与之前对话状态对账。                | anti-hallucination,placeholder                     | 占位,ComingSoonPanel,wire                  | True
+156   | API endpoint 合 main 前必须 dev 真机至少调一次（curl 或浏览器），不能只信 tsc + 单测。audit endpoint 在 ma   | api,qa,deploy                                      | 新增 endpoint,API route,新接口,合 main,ship en | True
+158   | Claude App 推荐下一步任务前必 conversation_search 最近对话验真实状态，禁凭 mirror 快照推荐（mirror 滞后会推荐已删   | app-mirror-stale                                   | claude-app,æ¨è,mirror,ä»»å¡          | True
+145   | 收到盘点/审计/去 mock 类工单时,必先跑 grep -rn "mock\|MOCK\|RM\|fake\|placeholder\|hardcoded"    | audit,grep,mock-cleanup                            | 盘点,审计,去 mock,假数据,清理 mock                 | True
+150   | auth 401 失败诊断必先查 supabase auth.users 账号是否存在,再查 env/key/route。本会话踩坑反序:env+key 都查完   | auth,diagnose,always_on                            | 登录失败,401,auth 报错,登入,注册失败                 | True
+177   | 收到触发词必跑 bash .claude/conductor/boot-checklist.sh,把扫描自检行贴在回复末尾;读 6 个 state(global   | boot,protocol,startup                              | 11111,;nh,继续NH,启动NH,boot                 | True
+8     | 项目优先级：NH > Conductor > Fipper > 其他暂停。Ray 没主动提的项目（Mega888 / 黑园 / 珍粤轩 / Rsport / T   | business,always_on                                 | 项目,优先级,做什么,下一步                           | True
+27    | NH 没活跃用户,v2 任何动作不顾兼容,旧路径/旧域名直接断,不做 301、不做迁移、不做"软切"。                                | business,dispatch,always_on                        | NH,v2,旧版本,兼容,301,迁移,软切                   | True
+270   | [cc/build] Sonnet 派单用 npm run build,不用 tsc 替代(类检 ≠ 全 build)                        | cc,build                                           | build,tsc,验证                             | True
+134   | 2026-05-04 CC framework 级诊断必验证:CC 报 framework/router/build pipeline/文件约定级诊断,Clau   | cc,framework,verification                          | middleware,router,build,framework,死代码    | True
+227   | 派 CC 指令首行加 全程简体中文(汇报/注释/commit/PR body),防 Sonnet 飘外语                               | cc,language                                        | 派 CC,Sonnet,简体中文                         | True
+229   | 派单格式:首行 🟢/🔴 + 工头(Sonnet 执行/Opus 规划)+ 文件冲突表 + 完工汇报字段 + 简体中文                         | cc,workflow                                        | 派单,派 CC                                  | True
+262   | [cc/workflow] 派 CC 任务首行强制标 🟢/🔴 + 工头(Sonnet 执行/Opus 规划)+ 工窗角色(双窗明示哪窗跑)              | cc,workflow                                        | 派 CC,sonnet,opus                         | True
+208   | 派 >=2 CC 并行必各自独立 worktree (git worktree add ../nexhub360-ccN main). 同目录撞车=stash    | cc,worktree,sop                                    |                                          | True
+268   | [cc/worktree] 双 CC 同 worktree 必撞 HEAD → 强制 worktree 隔离(~/nexhub360-cc2)或单 CC 串行    | cc,worktree                                        | 双窗,并行,opus + sonnet                      | True
+267   | [cc/抄] 派 CC 修法直接抄已 ship 同款组件(Ray 说"抄 X"= 抄,不绕 token 链 / 设计哲学)                      | cc,抄                                               | 抄,同,一致                                   | True
+182   | 任何派 CC 任务结尾必含「自验 checklist + 输出格式约定」(表格/curl HTTP code/pm2 status/git diff stat    | cc-dispatch,output-format,anti-evidence-skip       | 派 CC,CC 任务,delegate                      | True
+157   | CC 写 DB 脚本前必先 grep SUPABASE_URL 确认 dev/prod 共用否；共用必加 --dry-run flag 或部署后 EC2 上 R   | cc-prod-safety                                     | CC,DB,prod,supabase,dev                  | True
+152   | CC 报"verified/全对应/数据流闭合"≤2 轮接受，超过必须 Ray 自己 sed/cat 看真原文，CC 结论无效。Postgres/浏览器报错才是   | cc-trust,verify                                    | 全对应,数据流闭合,query 完整正确,verified,全部已合       | True
+188   | 「查/检查/验证」类动词 = 只报状态 + 停。禁附加路线图、修复方案、'接下来做什么'、'建议下一步'。Ray 说'修/做/动/推'才进入修复模式。来源:5-   | check-only,boundary,anti-self-initiate             | æ¥,æ£æ¥,éªè¯,ç,çç¹             | True
+187   | Claude App 排查 connector / API / 公网链路问题时,第一动作必先看服务端 access log 实证流量真实状态,然后才动 serv   | claude-app,debug-order,access-log-first            | connector 不通,无法访问,couldn't reach,timeout | True
+181   | Claude App 派活/给方案/推荐前必跑 conversation_search + grep/cat 真文件 + 确认 path。禁未 verify 就   | claude-app,verify-first,anti-garden                | 派单,给方案,推荐,建议,evaluate,plan               | True
+263   | [cmd/clarity] bash/curl 命令首行强制标【你跑 / 派 Sonnet / 派 Opus】,不让 Ray 猜                   | cmd,clarity                                        | bash,命令,跑                                | True
+111   | 不主动建议 Ray 收工/休息/推迟。停由 Ray 决定。该做就做完。Claude 只在被问还要做吗才提供选项。                           | communication,decision                             | 收工,到此为止,休息,你说了算                          | False
+103   | 教 Ray 桌面 app 操作时禁混终端 CC 概念。桌面 app 没 CLI flag,设置走 settings.json,目录走 Browse + Pin。   | communication                                      | 桌面 app,Customize,Browse remote,Select fo | True
+105   | 解释动作/功能 1-2 句到结论。禁堆叠为什么+原理+替代方案。Ray 问什么答什么，深挖等他追问。覆盖 rule 5/23 去术语，强化短。            | communication                                      | 简单说人话,不废话,简短                             | False
+214   | conductor /state/<slug> probe 必用 fake slug (如 /state/probe-test), 禁直对 prod state   | conductor,sec,sop                                  |                                          | True
+217   | cron 写 xr_messages/xr_orders 等双轨表前必 grep 读取侧 page.tsx 的 .eq()/过滤逻辑,device_id/aut   | cron,db,sop                                        | cron,xr_messages,device_id               | True
+218   | cron-outreach.js 等 script 读 .env.production,本地 dry-run 前必确认 .env.production 存在性+   | cron,env,sec,sop                                   | cron-outreach,dry-run,.env.production    | True
+274   | CSS ç±»é®é¢(mono/å­è²/é´è·)ä¿®ä¸å¤å¿å  stylelint è§åå¨ç«æ«,åæ   | css,lint                                           | mono,monospace,å­ä½,å­è²,é´è·,styl | True
+265   | [debug/visual] 视觉根因诊断必先实证对比对象(grep 真组件 + cat 真 css),不凭印象推根因                        | debug,visual                                       | 字体,颜色,散,对比                               | True
+271   | [decision/judge] Ray 3 次"继续"= 授权直接判断,不再抛 1/2/3,直接推 + 明示判断 + 不同意叫停                  | decision,judge                                     | 继续,你安排,你决定                               | True
+210   | verify-deploy.sh 三联验 prod-only (build mtime+pm2 uptime+grep token). dev 跑 next d   | deploy,dev                                         |                                          | True
+189   | 验证「代码是否生效」必须三联:build mtime + pm2 uptime + grep 关键 token。git HEAD 不是证据 — pm2 跑的是    | deploy,verify,build-vs-head                        | 生效,上线,部署,deploy,ship,reload              | True
+194   | 三联验第三联 grep 关键 token 时,路径必按真改动文件目录写,不写默认 admin-v2/_components。例:ConfirmDialog 在    | deploy,verify,grep-token-path                      | 三联验,grep token,build verify              | True
+133   | 2026-05-04 设计前必爬代码:基于 NH 现状的设计/规划/新模块,开口前必派 CC grep/cat/find 真实代码,禁通用 SaaS 模板脑补。   | design,nh,planning                                 | 设计,super admin,规划,架构,新模块                 | True
+226   | 不跑 curl smoke,API ship 后 UI 接时实测                                                   | dev,test                                           | curl,smoke,API 测试                        | True
+224   | Visualizer mockup Ray 审过直接派 CC 落代码,不要写 mock data 二次替换                              | dev,ui,cc                                          | mockup,落代码,UI 落地                         | True
+228   | UI 真机验前必 Ctrl+C 停 dev → git checkout 新分支 → npm run dev,不能直接切分支不重启                  | dev,verify                                         | 真机验,dev,checkout                         | True
+225   | batch 起 API 与 UI 并行,UI 直接接真 API,不写 mock data 后置替换                                  | dev,workflow,api                                   | batch,API,UI 接 API                       | True
+169   | NH 标准 ship 节奏铁律：local 开发 → 真机自验 → push PR → 浏览器合 main → SSH dev pull+build+resta   | dev-flow,ship-order                                | ship,部署,merge,prod,dev                   | True
+2     | 不要带 Ray 跑花园。每步都要 Ray 来回贴输出 = 跑花园。诊断阶段我自己读代码（grep/sed/cat 一次性多读），定位完根因再让 Ray 跑修复命   | diagnose,always_on                                 | 绕了,跑花园,怎么还,还在搞,快好了                       | True
+14    | 时间预估说真的。30 分钟就 30 分钟，3 小时就 3 小时。到点没完认账重估，不含糊'快好了''马上'。绕了就喊停说'这事要 X 小时，今天不做'。       | diagnose,always_on                                 | 快好了,马上,再 1 步                             | True
+21    | 数据/事实查证前先标'待查'。不确定的事不要装确定。要 web search / grep / cat 查的事先说'查一下'再答，不猜。               | diagnose,always_on                                 | 可能,应该,估计                                 | True
+128   | 见 cascade pattern bug 修完一处,立刻 grep 全 component (sister components) 找同结构同坑。follow   | diagnose,always_on                                 | cascade,同坑,sister,扩查                     | True
+1     | 复杂 bug 先读代码到位再动手，不要试探性命令一条条问 Ray。诊断方案要建立在已读完的事实上。预估时只说「这事 X 小时」，不说「再 1 步就好」。超过 5   | diagnose                                           | bug,排错,诊断,为什么,报错,失败                      | True
+190   | 同一问题派 >2 次诊断命令未解 = 立刻停。不派第 3 次。改问 Ray「要我继续挖还是停」。常见兔子洞:pre-commit hook 卡 commit 但   | diagnosis,cap,anti-rabbithole                      | åå¤,å,è¿æ¯,æä¹è¿,ç»§ç»­æ¥    | True
+6     | 派 CW/CC 干活前，先确认目标文件/状态是否已存在。让 Ray 转一份已做完的活的派单 = 跑花园。修复方法：派单第一步永远是 ls / cat / git   | dispatch,always_on                                 |                                          | True
+11    | 派单后等工头汇报再发下一段。CC 没回 = 我等。CC 闲着不是我自作主张塞活的理由，问 Ray 派哪条。                              | dispatch,always_on                                 | 还有什么,cc2,并行,闲着                           | True
+12    | Ray 没说要做的事不做。不顺手挑、不自作主张、不'反正闲着'。我以为有用 ≠ Ray 要做。Ray 后来问'我有叫你做这个吗'就是踩这条的信号。          | dispatch,always_on                                 | 顺手,我自己挑,反正闲,我以为                          | True
+18    | 回复结尾不带选项菜单。不每次都甩'A / B / C 回哪个'。Ray 有事会说，没事就停。每条对话最多 1 次问选项，不连续甩。                  | dispatch,always_on                                 |                                          | False
+20    | 不替 Ray 决定优先级。Ray 问'还能做啥'列清单可以，但不评分、不推荐'建议先做 X'。除非 Ray 明确问'你建议哪个'。                  | dispatch,always_on                                 | 建议哪个,你觉得呢,你说                             | True
+24    | 多步任务（>3 步）开头必须给完整路线图：总共 N 步、每步做什么、哪步可回滚。不挤牙膏式一步一步派，让 Ray 知道全貌。                     | dispatch,always_on                                 | 完善的处理方式,完整步骤,怎么办,怎么改                     | True
+28    | 派 CC 前先做文件冲突分析 — 列每条任务动哪些文件,无冲突的并行派 CC1+CC2。不要默认串行。冲突 = 改同一个文件、同一个 migration 序号、   | dispatch,always_on                                 | 派单,派 CC,batch,并行,cc2                     | True
+55    | 派活前必读 package.json scripts 段。spec 里出现的命令(lint/test/build)必须先 grep 确认存在,不存在的命令在 s   | dispatch,always_on                                 |                                          | True
+121   | A2: cd（外部 coding agent）prompt 必带「外壳由外层 layout 提供，本页只出主内容」一句。否则 cd 会重复出 chrome（FA   | dispatch,always_on                                 | cd,coding agent,派单,prompt,新页             | True
+125   | A6: mobile FAB / TabBar 调整后必真机 + Chrome DevTools iPhone viewport 双确认。只看其中一个会漏 sa   | dispatch,always_on                                 | FAB,TabBar,mobile,移动版,viewport           | True
+127   | 派 CC 命令首词必 ssh -i ~/nexhub360-sg-key.pem ubuntu@18.140.142.3 (远端任务)。CC 默认本地 cd,容   | dispatch,always_on                                 | 派CC,远端,SSH,nexhub360-dev                 | True
+131   | 同分支 stack commit 必每条 build+reload+真机/puppeteer 验,不攒着 push 一起验。                     | dispatch,always_on                                 | commit,push,stack,验证                     | True
+137   | 派给 Ray 的 bash/curl 指令首行必标【你跑】(WSL 本地) 或【CC 跑】(EC2 远端)。Ray 重复问'以上指令发给谁/cc 吗'即触发信号   | dispatch,communication,always_on                   | 以上指令,发给谁,cc 吗,本地跑,远端跑,curl,bash          | True
+56    | 同一 working tree 严禁 ≥2 个 CC 平行干。平行任务一律走 git worktree。派活前 git branch -vv 看是否已有 wor   | dispatch,safety,always_on                          | 派 CC,dispatch,平行                         | True
+123   | A4: PR 分支偏离 main >5 commit 立刻 rebase 或弃分支重 cherry-pick。长期不 rebase 的 feature 分支 s   | dispatch,safety                                    | PR,分支,rebase,main,diverge                | True
+124   | A5: GitHub squash merge 对 git mv 敏感，rename 操作前必先把 base PR 合掉再开新分支。否则 squash 会丢失    | dispatch,safety                                    | squash,git mv,rename,merge               | True
+97    | 桌面 app 自动起 .claude/worktrees/<auto-name> 子 worktree,commit 落 claude/xxx 子分支。派单时必   | dispatch,worktree                                  | 派 CC,worktree,git merge,接力               | True
+107   | 聊天框会把含点号的字符串（user dot id, domain dot com）自动 markdown 链接化导致代码坏。贴 cat 长文件前默认用 base   | encoding,paste                                     | 长代码,cat EOF,点号字符串                        | True
+211   | 跨环境 env 同步: prod .env.production 加 key 必同步 dev .env.local; pm2 改 .env 必 delete+s   | env,pm2,deploy                                     |                                          | True
+155   | 新增 require env 必须三件齐：①.env.example 跟上 ②部署 SSH 后 grep .env.production 验存在 ③pm2 en   | env,prod,deployment                                | ADMIN_JWT_SECRET,require env,Missing,新加环 | True
+159   | .env 有 key ≠ key 有效。provider 报错必双 verify：grep .env 真值末 4 位 + curl 验上游 200。Eleven   | env-key-double-verify                              | key,env,api,unreachable                  | True
+191   | 给方案前必标「猜的」或「查过的」。没 cat/grep 实证的方案禁直接下指令; 先 cat/grep, 回报后再下方案。来源:5-07 audit-bot p   | evidence,anti-guess,diagnosis-discipline           | å»ºè®®,æ¨è,åºè¯¥,æ¹æ¡,æ¹æ       | True
+3     | Ray 表达不满 / 给反馈 / 修正我 → 我应该立刻 add 到 memory，不需要 Ray 开口要求。Ray 说别让我开口提醒你即是这条铁规的来源。每条   | feedback,always_on                                 | 别让我,我说过,又来了,提醒你                          | True
+17    | 我做错立刻认，不绕、不解释、不道歉式拖。'绕了大半天'出现 → 直接说'我错了，撤'，给撤回命令。不要分析为什么会绕。                        | feedback,always_on                                 | 绕了,搞错,做错                                 | True
+129   | 看 Ray 截图先扫整体上下对齐线 (画垂直辅助线),再看局部细节。本会话 3 次只看局部漏整体。                                  | feedback,always_on                                 | 截图,对齐,不齐,宽度                              | True
+130   | CC 提'设计意图'/'呼吸感'/'尊重原设计'结论,Ray 没拍板前不自动信。Ray 视觉直觉>CC 脑补理由。                          | feedback,always_on                                 | 设计意图,呼吸感,breathing,尊重                    | True
+132   | Ray 同一问题反馈 3+ 次 ('问题没解决'/'还是一样'),停手反思根因,不再硬修。本会话 deals 卡片宽度 4 轮才中。                 | feedback,always_on                                 | 问题没解决,还是一样,反复                            | True
+273   | æ´¾åé¦è¡å¿æ  ð¢(CC)/ ð´(Ray èªå·±è·),ç¦çç¥                         | format,disp                                        | æ´¾,bash,SSH,curl                        | True
+272   | ship æµç¨ bash å½ä»¤åæµè§å¨éªåä¸¤æ®µå,ä¸æ¾åä¸ç¼å·åè¡¨é² R   | format,ship                                        | ship,merge,dev OK,prod                   | True
+192   | gh pr merge --squash --delete-branch 在 main 被另一 worktree 占用时本地 checkout main 失败    | gh-cli,worktree,merge                              | gh pr merge,squash merge,远程分支没删          | True
+147   | 大型改造工单派 CC 前必跑 git log --oneline base..HEAD + git branch --show-current + 列出 bas   | git,branch,scope                                   | 派单,工单,base,分支基础                          | True
+153   | squash-merge workflow 下，git cherry/git diff --name-only 都会误判（D 文件被算成新增）。必用 git d   | git,branch-cleanup,squash                          | 分支收口,已合 main,cherry,squash drop,git diff | True
+146   | 任何 cherry-pick N 个 commit 操作前,必输出"将 cherry-pick 的 commit ID + 简短描述清单"给 Ray 过目,Ra   | git,cherry-pick                                    | cherry-pick,cherrypick,挑 commit          | True
+151   | 同 stack PR 多分支合 main 时:① 先 git merge-base 验证拓扑(确认是 stack 还是平行),② squash merge 用    | git,merge,dispatch,always_on                       | stack PR,squash merge,合 main,多分支合并       | True
+193   | batch chore PR (audit/cleanup/refactor 类) 禁用 git add -A,必用具体文件路径 git add a b c。原   | git-add,batch-chore,anti-bulk-stage                | git add -A,chore commit,batch cleanup    | True
+180   | GNU grep --exclude 只匹配 basename,路径式 glob 如 '*/messages/*.json' 不生效。文件名 glob 用 --   | grep,gnu,exclude,syntax                            | grep,--exclude,exclude-dir               | True
+213   | find/grep 后缀必带全可能 (.cjs/.mjs/.ts/.tsx/.json/.sh), 漏=误报'仓内缺失'. 来源:5-08 CC sweep 漏   | grep,sop                                           |                                          | True
+174   | /proc/stat CPU 采样窗口 ≥1000ms（200ms 单 vCPU 自污染显 100%）。计算 idle 含 iowait（标准做法）：(b.id   | host-metrics,proc-stat                             | cpu_pct,/proc/stat,sampleCpu             | True
+106   | 不主动断言 Ray 本地有没有装某软件/仓库/密钥。先让他跑 ls/which/grep verify，结果出来再说。教训：猜 WSL 没装浪费 15min，结   | inference,verify                                   | 本地环境,装没装,猜测                              | False
+199   | local 真机验 = 主仓切 feat 分支跑 dev 标准路径:cd ~/nexhub360 && git checkout <branch> && npm   | local-dev,worktree,standard-flow                   | local 验,真机验,npm run dev,worktree dev     | True
+84    | 11111 开机扫描必须 4/4 文件全读完(global+nh+rules+项目 slug),报告末尾必须带格式化自检尾巴: 扫描自检:global ✅ /    | memory,sop,11111                                   | 11111,开机扫描,扫描自检                          | True
+93    | Memory 工单引用必带 asof: <YYYY-MM-DD> + verify: <一行命令>。缺验证锚点的工单标签禁触发 P0/阻塞行为            | memory-hygiene                                     | memory,工单清单,asof,verify                  | True
+10    | 每次新对话开头：先盘点 NH / Conductor / Fipper 3 项现状，跟 Ray 商讨哪些走 CC 直派、哪些 Ray 在 CW 亲自处理，再进具   | meta,always_on                                     |                                          | True
+7     | 每条铁规带 4 字段 — content / tags / trigger_keywords / trigger_action。tag 类型：always_on   | meta                                               |                                          | True
+222   | [migration/fk/sop] migration 顺序依赖(FK 引用 / 触发器)必显式标 1→2→3,跑反必报错。Ray 操作 SQL Editor   | migration,fk,sop                                   | migration,fk,顺序,sql editor               | True
+216   | 写新 migration 前 ls supabase/migrations/ tail -10 看已存在 stamp。新 stamp 用 date +%Y%m%   | migration,supabase,sop                             | migration,新 migration,migration stamp    | True
+196   | Migration SQL 永远走【Supabase Web SQL Editor】。CC 输出完整 SQL,Ray 复制粘 Web Editor Run。禁推   | migration,supabase,sql-editor                      | migration,db push,supabase link,supabase | True
+209   | mirror 待办/HEAD/占位/migration 状态默认 stale, 决策前必 grep main 实物或问 Ray. 例: mirror 标 #13   | mirror,sop                                         | mirror,stale,migration 未建                | True
+269   | [mirror/verify] mirror state 字段"PR # 待验"前必查浏览器真 Draft 状态,字段不可信                     | mirror,verify                                      | mirror,state,待验                          | True
+266   | [mockup/token] Visualizer mockup 起步必 grep --ad-* token + cat Panel.tsx + 既有 pane   | mockup,token                                       | mockup,visualize,panel                   | True
+170   | 多 CC 并行规则：派单前列文件冲突表；共享 Supabase migration 不并行跑；PR 合并按依赖顺序逐个 ship 不批量；PR base 默认    | multi-cc,parallel                                  | cc1,cc2,并行,worktree                      | True
+184   | 改/建 nginx vhost 前必跑 sudo grep -rn "server_name <domain>" /etc/nginx/ 扫现有占用,防 con   | nginx,vhost,pre-flight                             | nginx vhost,sites-available,sites-enable | True
+185   | copy nginx vhost 时 sed 替换必含三处:server_name 域名 / access_log 文件名 / error_log 文件名 /    | nginx,vhost,sed                                    | cp /etc/nginx,vhost copy,sed nginx       | True
+142   | Next.js App Router 嵌套 route group 子 layout 只能 ADD 不能 REPLACE 父 layout。绕 parent S   | nh,framework                                       | route group,nested layout,Shell 包,passth | True
+143   | 防 Chrome autofill: 1) autoComplete="new-password" 2) input name 用不常见值 (nh-acc-xX   | nh,ui                                              | autofill,autocomplete,Chrome 自动填,登录页,log | True
+149   | 建表/UI 接入类工单涉及"手填数据"时(订阅月费/SaaS 资源/第三方账单等),派单前先问 Ray "自动同步可行吗 / 不行的话手填值得吗",再决定建表。   | planning,methodology                               | 手填,录数据,建表,自动同步                           | True
+108   | PM2 standalone 改 .env 后用 pm2 delete + pm2 start ecosystem.cjs。禁 pm2 restart --up   | pm2,ecosystem,env                                  | update-env,ecosystem cjs,env len 0       | True
+264   | [pr/branch] 派 CC 修 PR 必让第 1 步实证真源分支(父 commit + branch --contains 反查),不机械推 fetch    | pr,branch                                          | PR,push,分支                               | True
+219   | commit message+PR body 引用文案前必 grep 真实代码 COPY 字符串对账。文案分裂=ship 后 user 看到的跟你以为的不一样。   | pr,commit,sop                                      | commit message,PR body,文案                | True
+109   | prod 推任何 commit 后必 npm run build + pm2 reload，不能只 reload。standalone manifest 不重生   | prod,deploy,build                                  | git push prod,pm2 reload,Server Action x | True
+195   | prod/dev ship 指令前必看终端 prompt 前缀:ubuntu@ip-= 已在 EC2 直接给纯命令(去 SSH 包裹);userray@DESK   | prod-ship,ssh,position-aware,sop                   | prod ship,ssh,18.140.142.3,nexhub360-sg- | True
+175   | UI 占位若无 schema/API/用户端入口（如 Enterprise 申请、子账号邀请），不在 admin 收尾范围。先 PM 出需求再开 epic，禁脑   | product-scope,wire-readiness                       | coming soon,wire,schema 未落地              | True
+179   | 正则扫描类工具(audit-bot/code scanner/security check)上 cron 前必须先 sample top 4 文件全部命中行给    | regex,audit,false-positive                         | audit-bot,regex,grep,scan,mock,fake      | True
+9     | 工头（CC）不碰 prod 任何渠道。不让工头有 admin GitHub token（用 fine-grained PAT）。不让工头改 Conductor    | safety,always_on                                   | prod,生产,admin,上线,部署                      | True
+13    | Ray 表达情绪（累 / 失望 / 放弃 / 气死 / 没人 / 删了 / 撑不住 / 受不了）→ 立刻停派单，不给方案，先问人不问活。先确认 Ray 是否安全   | safety,always_on                                   | 放弃,失望,删了,撑不住,累,没人,气死,受不了,不想              | True
+25    | prod 操作前第一步永远是备份。改 nginx / .env / DB schema / pm2 ecosystem 任何 prod 配置前，第一条命令必须是   | safety,always_on                                   | 改 nginx,改 prod,改 .env,production,pm2,DB, | True
+57    | CC commit 前第一步永远是 git branch --show-current,不能信几秒前的 git status。平行 CC 会在两条命令之间切走    | safety,always_on                                   | commit,push                              | True
+120   | A1: 真色/logo/字号必先 grep 真文件（globals.css / 主站 dist / 设计稿源），编 hex 禁。任何颜色值落地前必须从权威源头复   | safety,always_on                                   | 真色,logo,字号,hex,颜色,#                      | True
+122   | A3: 新页必落 src/app/(dash)/<page>/，禁进 src/app/(app)/。(app) 路由组已全删，任何复活 (app) 的 PR 立   | safety,always_on                                   | 新页,(app),(dash),路由,page.tsx              | True
+89    | prod é¨ç½²åå¿åå¨ dev è· standalone server (node .next/standalone/server.   | safety,deploy                                      | prod,é¨ç½²,build,ä¸çº¿                 | True
+95    | 派 CC 任务首行必标 🟢 或 🔴。🟢 = Ray 贴 CC + Always allow 全程。🔴 = Ray 自己 SSH。禁 🟡 / 紫色 / 任何中间色   | safety,dispatch                                    | 派单,绿色,红色,🟢,🔴                             | True
+99    | 派 CC 任务首行必标 🟢 或 🔴。🟢 = Ray 贴 CC + Always allow 全程。🔴 = Ray 自己 SSH。禁 🟡 / 紫色 / 任何中间色   | safety,dispatch                                    | 派单,绿色,红色,🟢,🔴                             | True
+90    | Ray ç¬¬ä¸æ¬¡è¡¨è¾¾ä¸æ»¡ (ä½ ä»å¦/å»æ­»/çä¸æ/å¤´æ) ç«å»åæææ´¾   | safety,feedback                                    | ä½ ä»å¦,å»æ­»,çä¸æ,å¤´æ,è¸©å | True
+104   | 派 CC 收工/同步任务前必先 rm -f /tmp/*_payload.json 清干净。system-reminder 注入的临时文件路径默认不可信(可能是   | safety,workflow                                    | /tmp/,payload.json,system-reminder,临时文件  | True
+85    | 覆盖式 PUT /state/<slug> 必走完整 payload 流程:① Claude App build_payload.py 重建完整 content   | safety                                             | 追加                                       | True
+87    | 派任何 bash/curl 指令给 Ray 必首行明标【纯只读】或【会改 X】。只读 = git/grep/find/sed -n/cat/ls/pm2 des   | safety                                             | 复制                                       | True
+154   | schema drift 排查永远不信 migration 文件（CREATE TABLE IF NOT EXISTS 撞已存在表会跳过）。永远查 SELECT   | schema,supabase,migration                          | schema drift,表结构,admin_audit_log,table s | True
+198   | 工单字段/schema 假设前必派 CC grep migration 文件 + cat 真 schema,禁凭 ComingSoon 描述/印象推断字段集。本   | schema,verify,grep-first                           | schema,字段,migration,工单,设计 panel          | True
+212   | grep secret 必管道直写文件 (>> file), 禁 echo/cat/stdout 让 key 进终端 history / claude 后端 /   | sec,secret                                         |                                          | True
+173   | CC 跑命令涉及 key/token，必 head -c N 或固定字符串截断，禁用正则（漏匹配会全文打印 secret 到对话）。                 | secret-safety                                      | api key,token,secret,截断                  | True
+91    | CC 不得读取 ~/.config/gh、~/.netrc、env 中 GH_TOKEN/GITHUB_TOKEN 等凭证文件。SSH 进 EC2 后 git    | security,cc,credentials                            | push,gh,gh_token,GITHUB_TOKEN,.netrc,cre | True
+148   | 让 Ray verify 任何 key/token/secret 时,必让其跑 grep KEY .env | cut -c1-40 截短命令,只看前 N 字符   | security,key-handling                              | API key,token,secret,sk-ant,verify key   | True
+201   | PR merge 分级原则（5-08 ship 流程优化）：🟢 CC 自动 merge 条件：纯新增脚本/工具/文档/测试/skill，diff <100 行，   | ship,merge,sop                                     | merge,PR,合并,gh pr merge,squash,ship      | True
+136   | 2026-05-04 ship 后禁主动推增量:UI/模块 ship 后只问 Ray'够不够',禁主动推'还能加 XYZ ABC'。建设瘾驱动会稀释信号,adm   | ship,scope,builder-addiction                       | ship,完工,交付,够吗,补充                         | True
+275   | Ray æ¥ dev OK åæ§çæ¬æ®ç/çé®ç«å³æ´¾ CC å®è¯ git HEAD å°ç®æ  c   | ship,verify                                        | dev ok,prod,æ§ç,æ²¡æ´æ°             | True
+200   | ship 必走完整 SOP 8 步:local 真机验 → push PR → 浏览器合 main → 主仓 git pull → SSH dev pull+r   | ship-sop,dev-flow,no-skip                          | ship,部署,merge,推 main,完工                  | True
+135   | 2026-05-04 战略决策自动苏格拉底:super admin/商业模式/定价/人事/大改方向 类决策,自动切苏格拉底。规则:①切前 1 句'将问 N 题,   | socratic,strategy,decision                         | super admin,商业模式,定价,人事,大改,新方向            | True
+223   | [sop/deploy] SOP 8 步禁跳 dev 真机验,本地 OK ≠ dev OK。跳了出问题 prod 回滚成本高。来源:5-08 PR #149 第   | sop,deploy                                         | sop,dev 验,ship,deploy                    | True
+215   | CREATE OR REPLACE FUNCTION 前必 cat 原 function 全文(line 范围),逐字段对账 schema(列名/NOT NUL   | sql,migration,sop                                  | CREATE OR REPLACE FUNCTION,trigger,migra | True
+178   | 派 Ray SSH heredoc 命令禁用中文占位符如「(粘贴 X 内容)」,Ray 会直接整段贴占位文字写入文件造成事故。必须用 ALL CAPS 英文标注   | ssh,heredoc,anti-hallucination                     | heredoc,sudo tee,EOF,cert,key,paste      | True
+161   | Stacked PR：分支 base 上一个 PR 时，主 PR squash merge 后必冲突。用 git rebase --onto origin/ma   | stacked-pr-rebase                                  | stacked,PR,rebase,squash                 | True
+110   | db push 前必跑 migration list 看 Local/Remote 差异 + SQL 直查关键列/policy 真实状态。有标记跑过但没真跑的用   | supabase,db push,migration                         | supabase db push,migration list,repair   | True
+92    | 接 ticket 上手前 CC 必跑 git log --all --oneline --grep="<ticket-id>" -i | head -10。命中   | ticket-validation                                  | 接ticket,工单,P0,bug修复                      | True
+176   | 高判断任务前必读 .claude/conductor/ray-twin/{identity,values,voice,red_lines}.md;Twin 永远   | twin,voice,decision                                | ray-twin,twin,起草邮件,写公告,谈判稿,对外发言,公开发言,写复盘 | True
+220   | 多色 palette(KanbanBoard 6 状态色/SourcePieChart 7 调色盘/任意 >=3 同表 hex)整套迁 token 才合理。单清   | ui,design,sop                                      | palette,调色盘,KanbanBoard,SourcePieChart   | True
+160   | 字段单位错位类 bug 必全 provider 一并修，禁单点修，否则其他 provider 仍显错数无意义                             | unit-mismatch-batch-fix                            | å­æ®µ,åä½,bug,provider               | True
+126   | 真机和puppeteer/DevTools数据冲突时,立刻信真机,自动化测试当sanity check不当真值。Ray截图>测试输出。                | verify,always_on                                   | 真机,DevTools,puppeteer,测试                 | True
+96    | 开机扫描复述工单状态前，看 updated_at >12h 的字段必派 CC 跑只读 verify 再贴报告。强化 rule 86,rule 86 只说 进行中   | verify,bootup                                      | 11111,开机扫描,工单状态,mirror                   | True
+100   | 开机扫描复述工单状态前，看 updated_at >12h 的字段必派 CC 跑只读 verify 再贴报告。强化 rule 86,rule 86 只说 进行中   | verify,bootup                                      | 11111,开机扫描,工单状态,mirror                   | True
+197   | 端口/进程占用诊断必先派 lsof/ss/pgrep verify,凭印象禁猜。Ray 怼瞎猜 ≥2 次 = rule #132 触发停手反思。来源:5-07    | verify,port,anti-guess                             | 端口,占用,被占,3000,3001,3500                  | True
+86    | 开机扫描复述工单状态 (P0/进行中/X% 完成) 必带 mirror 时点 + 主动 verify。能 grep 验证的 (分支已合 main / commi   | verify                                             | 进行中                                      | True
+80    | Ray 说 周复盘 / weekly review → Claude:① recent_chats n=20 sort_order=asc after=7天前    | weekly,review                                      | 周复盘,weekly review,复盘一周,本周                | True
+202   | 派 CC 前必 cat 任务相关源码+仓里 skill,grep 字段实证。起 token/命名前 grep 产物确认字符串真存在,不自起。来源:5-08 cm   | workflow,sop                                       | 派 CC,cat,grep,token,命名,skill             | True
+203   | 工头不踢皮球。CC 卡住派 CC 自查实物,禁问 Ray 凭印象答事实题。Ray 凭印象=错答源头。来源:5-08 让 Ray 答 5 题被怼'还把问题丢给我'   | workflow,sop                                       | CC 卡,踢皮球,凭印象,Ray 答                       | True
+204   | 区分应用 fail vs 验证工具 fail。pm2 uptime+build mtime+产物存在=部署成功;verify 脚本 fail 不等于 ship    | workflow,sop                                       | verify,fail,部署成功,pm2 uptime,build mtime  | True
+205   | Ray 已选 A/B/C 后不绕路径。要换明示问 Ray,不自己改。来源:5-08 选 C 我派 SSH 走 A 被怼'乱来一场'                  | workflow,sop                                       | Ray 选,绕路径,自作主张                           | True
+206   | 派 CC 命令堆 heredoc/sudo/嵌套管道前问'3 行内能解吗',能则极简。来源:5-08 SSH heredoc+sudo nginx 一坨被怼'简   | workflow,sop                                       | 派 CC,heredoc,sudo,嵌套管道,极简                | True
+98    | 🟢 任务派 CC 后,Ray 点 Always allow 攒列表,不强制全局 Bypass。deny 列表(rm -rf / force-push / har   | workflow                                           | Always allow,Bypass,绿色任务,CC 弹窗           | True
+171   | CC worktree 验证铁律：dev server 跑哪个目录，验证就在哪个目录的分支。CC 在另一 worktree 改代码 dev 看不到。需合 PR    | worktree,local-verify                              | worktree,local 验,dev server              | True
+280   | Karpathy R3:CC 提 PR 必列①改了几个文件 ②加/减多少行(git diff --stat) ③每个改动对应 Ray 哪句需求。无关改动单独开    | 场景:ship,对象:cc,kind:karpathy                        | PR,push,提交,merge                         | True
+276   | Conductor 规则双 tag 标准:每条新规则必带 ①场景 tag(启动收工/派单/ship/诊断/沟通/UI/代码/安全/成本/环境事实/决策事实/元规   | 场景:元规则,对象:claude,kind:meta                         | 新规则,add rule,POST /rules,新增规则            | True
+279   | Karpathy R2:派单必明示边界—只解决 X,不顺手改其他。CC 发现别的坑列出来给 Ray,不动手。50 行能解不写 200 行。'未来扩展'/'通用化   | 场景:派单,对象:cc,kind:karpathy                          | 派 CC,dispatch,只解决                        | True
+281   | Karpathy R4:派单第一句必带成功标准(真机看到 X/命令输出 Y/接口返回 Z)。CC 自己跑验证通过再回 Ray,不通过自己循环修,不让 Ray 帮   | 场景:派单,对象:cc,kind:karpathy                          | 派 CC,dispatch,成功标准                       | True
+277   | 派 CC 任务必带 5 行模板:【需求】<一句话>【成功标准】真机看到 X / 命令输出 Y / 接口返回 Z【边界】只解决这个,别的发现了列给我不要动手【动手   | 场景:派单,对象:cc,kind:模板                                | 派 CC,dispatch,任务给 CC                     | True
+278   | Karpathy R1:派 CC 前必让 CC 用 3 句话复述—1)理解什么问题 2)改哪些文件怎么改 3)有没有歧义/更简单做法。Ray 回 OK 才动手。   | 场景:派单,对象:claude,kind:karpathy                      | 派 CC,dispatch                            | True
+221   | [指标/schema/sop] 推荐基于字段语义的指标(churn/MRR/活跃)前必 grep schema + 验字段所有路径都有真值,不基于"应该有"推。   | 指标,schema,sop                                      | churn,mrr,kpi,指标,字段                      | True
